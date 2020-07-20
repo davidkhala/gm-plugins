@@ -34,9 +34,14 @@ func (s *Sm2PrivateKey) Sign(rand io.Reader, digest []byte, opts crypto.SignerOp
 type KeysGenerator interface {
 	GenPrivateKey() (*Sm2PrivateKey, error)
 	PublicKey(k *Sm2PrivateKey) *Sm2PublicKey
+	// NewPrivateKeyFromPEM
 	ParsePKCS8UnecryptedPrivateKey(der []byte) (*Sm2PrivateKey, error)
+	// NewPrivateKeyFromPEM
 	ParsePKCS8PrivateKey(der, pwd []byte) (*Sm2PrivateKey, error)
+	// PEMFromPrivateKey
 	MarshalSm2PrivateKey(k *Sm2PrivateKey, pwd []byte) ([]byte, error)
+	// NewPublikeyFromPEM
 	ParseSm2PublicKey(der []byte) (*Sm2PublicKey, error)
+	// PEMFromPublicKey
 	MarshalSm2PublicKey(k *Sm2PublicKey) ([]byte, error)
 }
